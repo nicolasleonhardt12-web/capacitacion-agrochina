@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Capacitacion AgroChina Express</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#FF2631;--dark:#1E293B;--white:#FFFFFF;--off-white:#FBF9F7;--gray:#6B6B6B;--light-gray:#F5F3F0;--green:#2E7D32;--green-bg:#E8F5E9;--red-bg:#FFEBEE;--yellow-bg:#FFFDE7;--blue:#1565C0;--orange:#F57C00;--purple:#7B1FA2;--teal:#00838F;--pink:#C2185B;--coral:#E8453C}
+body{font-family:'Segoe UI',Calibri,Arial,sans-serif;background:var(--dark);color:var(--dark);overflow:hidden;height:100vh;height:100dvh;width:100vw}
+#app{height:100%;display:flex;flex-direction:column}
+
+/* HEADER */
+.header{background:var(--dark);padding:10px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid var(--red);flex-shrink:0}
+.header img{height:36px}
+.header-text{color:white;font-size:13px;font-weight:600;letter-spacing:0.5px}
+.progress-bar{flex:1;background:rgba(255,255,255,0.15);height:6px;border-radius:3px;margin-left:12px}
+.progress-fill{height:100%;background:var(--red);border-radius:3px;transition:width 0.5s ease}
+.progress-label{color:rgba(255,255,255,0.7);font-size:11px;min-width:40px;text-align:right}
+
+/* MAIN CONTENT */
+.content{flex:1;overflow-y:auto;background:var(--off-white);scroll-behavior:smooth}
+.slide{min-height:100%;padding:20px 16px 100px;display:none;animation:fadeIn 0.4s ease}
+.slide.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* NEKO CHAT BUBBLE */
+.neko-section{display:flex;gap:12px;margin-bottom:20px;align-items:flex-start}
+.neko-avatar{width:60px;height:60px;flex-shrink:0;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 3px 12px rgba(255,38,49,0.3)}
+.neko-bubble{background:white;border-radius:4px 18px 18px 18px;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.08);flex:1;font-size:15px;line-height:1.6;color:var(--dark)}
+.neko-bubble strong{color:var(--red)}
+.neko-bubble .highlight{background:var(--yellow-bg);padding:2px 6px;border-radius:4px;font-weight:600}
+
+/* CARDS */
+.card{background:white;border-radius:14px;padding:18px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:4px solid var(--red)}
+.card.green{border-left-color:var(--green)}
+.card.blue{border-left-color:var(--blue)}
+.card.orange{border-left-color:var(--orange)}
+.card.purple{border-left-color:var(--purple)}
+.card.teal{border-left-color:var(--teal)}
+.card.pink{border-left-color:var(--pink)}
+.card.coral{border-left-color:var(--coral)}
+.card-title{font-size:16px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.card-body{font-size:14px;line-height:1.6;color:#444}
+
+/* NUMBER BADGE */
+.badge{width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;flex-shrink:0}
+.badge.red{background:var(--red)}
+.badge.green{background:var(--green)}
+.badge.blue{background:var(--blue)}
+.badge.orange{background:var(--orange)}
+.badge.purple{background:var(--purple)}
+.badge.teal{background:var(--teal)}
+.badge.pink{background:var(--pink)}
+.badge.coral{background:var(--coral)}
+.badge.dark{background:var(--dark)}
+
+/* DO / DONT */
+.do-dont{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0}
+.do-box,.dont-box{padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.5}
+.dont-box{background:var(--red-bg);border-left:3px solid var(--red)}
+.dont-box::before{content:"X  ";font-weight:700;color:var(--red)}
+.do-box{background:var(--green-bg);border-left:3px solid var(--green)}
+.do-box::before{content:"OK  ";font-weight:700;color:var(--green)}
+
+/* TEMPLATE MESSAGE */
+.template-msg{background:white;border-left:4px solid var(--red);border-radius:4px 12px 12px 4px;padding:14px 16px;margin:12px 0;font-size:13px;line-height:1.8;color:var(--dark);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.template-msg .fill{color:var(--red);font-weight:700}
+
+/* QUIZ */
+.quiz-section{background:white;border-radius:14px;padding:20px;margin:16px 0;box-shadow:0 2px 12px rgba(0,0,0,0.08);border:2px solid var(--red)}
+.quiz-q{font-size:16px;font-weight:700;margin-bottom:14px;color:var(--dark)}
+.quiz-option{display:block;width:100%;padding:12px 16px;margin:6px 0;border:2px solid #ddd;border-radius:10px;background:white;font-size:14px;text-align:left;cursor:pointer;transition:all 0.2s}
+.quiz-option:hover{border-color:var(--red);background:#FFF5F5}
+.quiz-option.correct{border-color:var(--green);background:var(--green-bg);color:var(--green);font-weight:600}
+.quiz-option.wrong{border-color:var(--red);background:var(--red-bg);color:var(--red)}
+.quiz-option:disabled{cursor:default;opacity:0.7}
+.quiz-feedback{margin-top:12px;padding:12px;border-radius:8px;font-size:14px;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.good{background:var(--green-bg);color:var(--green)}
+.quiz-feedback.bad{background:var(--red-bg);color:var(--red)}
+
+/* SECTION TITLE */
+.section-title{font-size:22px;font-weight:800;color:var(--dark);margin:20px 0 12px;text-align:center}
+.section-subtitle{font-size:14px;color:var(--gray);text-align:center;margin-bottom:20px}
+.section-icon{font-size:40px;text-align:center;margin-bottom:4px}
+
+/* POLICY BOX */
+.policy-box{background:var(--yellow-bg);border:2px solid #F9A825;border-radius:12px;padding:14px 16px;margin:14px 0;font-size:13px;line-height:1.6}
+.policy-box strong{color:#8B0000}
+
+/* STEP FLOW */
+.step-flow{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.step-item{display:flex;align-items:flex-start;gap:10px;padding:10px;background:white;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--red);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;margin-top:1px}
+.step-text{font-size:13px;line-height:1.5}
+
+/* NAME TABLE */
+.name-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0}
+.name-before,.name-after{padding:10px 12px;border-radius:8px;font-size:13px}
+.name-before{background:var(--red-bg);text-decoration:line-through;color:var(--red)}
+.name-after{background:var(--green-bg);color:var(--green);font-weight:700}
+
+/* FOOTER NAV */
+.footer-nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #eee;padding:10px 16px;display:flex;gap:10px;z-index:100;box-shadow:0 -2px 10px rgba(0,0,0,0.05)}
+.btn{flex:1;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn-prev{background:var(--light-gray);color:var(--dark)}
+.btn-next{background:var(--red);color:white}
+.btn-next:hover{background:#E0222C}
+.btn:disabled{opacity:0.4;cursor:default}
+
+/* WELCOME */
+.welcome-hero{text-align:center;padding:30px 20px}
+.welcome-neko{font-size:100px;margin-bottom:10px;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.welcome-title{font-size:28px;font-weight:800;color:var(--dark);margin-bottom:6px}
+.welcome-sub{font-size:15px;color:var(--gray);margin-bottom:24px}
+.welcome-logo{max-width:220px;margin-bottom:20px}
+.protocol-list{text-align:left;max-width:360px;margin:0 auto}
+.protocol-item{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:14px;border-bottom:1px solid #eee}
+
+/* COMPLETION */
+.completion{text-align:center;padding:40px 20px}
+.completion-score{font-size:72px;font-weight:800;color:var(--green)}
+.completion-text{font-size:18px;margin:10px 0;color:var(--dark)}
+
+/* Responsive */
+@media(min-width:600px){
+  .content{max-width:540px;margin:0 auto}
+  .do-dont{grid-template-columns:1fr 1fr}
+  .footer-nav{max-width:540px;left:50%;transform:translateX(-50%)}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="header">
+    <span style="font-size:24px">🐱</span>
+    <span class="header-text">CAPACITACION AGROCHINA</span>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <span class="progress-label" id="progressLabel">0%</span>
+  </div>
+
+  <div class="content" id="content">
+    <!-- Slides will be injected by JS -->
+  </div>
+
+  <div class="footer-nav">
+    <button class="btn btn-prev" id="btnPrev" onclick="prevSlide()" disabled>Atras</button>
+    <button class="btn btn-next" id="btnNext" onclick="nextSlide()">Empezar</button>
+  </div>
+</div>
+
+<script>
+const SLIDES = [
+
+// ===== SLIDE 0: WELCOME =====
+{html:`
+<div class="welcome-hero">
+  <div class="welcome-neko">🐱</div>
+  <div class="welcome-title">Bienvenida al Equipo</div>
+  <div class="welcome-sub">Soy el Maneki Neko de AgroChina y hoy te voy a ensenar las 8 reglas para atender mejor a nuestros clientes.</div>
+  <div style="background:var(--red);color:white;display:inline-block;padding:8px 20px;border-radius:20px;font-weight:700;font-size:14px;margin-bottom:20px">Marzo 2026 - Lectura Obligatoria</div>
+  <div class="protocol-list">
+    <div class="protocol-item"><span class="badge red">1</span> Como informar los envios</div>
+    <div class="protocol-item"><span class="badge coral">2</span> Cuando el cliente esta enojado</div>
+    <div class="protocol-item"><span class="badge orange">3</span> Problemas de envio</div>
+    <div class="protocol-item"><span class="badge blue">4</span> Cuando tomas otra conversacion</div>
+    <div class="protocol-item"><span class="badge purple">5</span> Siempre usa tu nombre real</div>
+    <div class="protocol-item"><span class="badge teal">6</span> Como escribir profesional</div>
+    <div class="protocol-item"><span class="badge pink">7</span> Nunca mandes al correo</div>
+    <div class="protocol-item"><span class="badge green">8</span> Si no sabes, pregunta</div>
+  </div>
+</div>
+`},
+
+// ===== SLIDE 1: ENVIOS INTRO =====
+{html:`
+<div class="section-icon">📦</div>
+<div class="section-title">Regla 1: Envios</div>
+<div class="section-subtitle">Como informar los envios correctamente</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Hola! Empecemos con lo mas importante: <strong>los envios</strong>. Este es el area donde MAS estamos fallando. El cliente SIEMPRE debe saber 4 cosas antes de comprar.</div>
+</div>
+<div class="card">
+  <div class="card-title"><span class="badge red">1</span> TRANSPORTE</div>
+  <div class="card-body">Diga QUE empresa llevara el paquete: Guatex, Cargo Expreso o JR.</div>
+</div>
+<div class="card orange">
+  <div class="card-title"><span class="badge orange">2</span> COSTO</div>
+  <div class="card-body">De un precio estimado: "El envio a su zona cuesta entre Q35 y Q50"</div>
+</div>
+<div class="card blue">
+  <div class="card-title"><span class="badge blue">3</span> TIEMPO</div>
+  <div class="card-body">Diga CUANDO llega: "Pedidos antes de 2PM salen al dia siguiente"</div>
+</div>
+<div class="card purple">
+  <div class="card-title"><span class="badge purple">4</span> PAGO DEL FLETE</div>
+  <div class="card-body">Explique: "El envio se paga <strong>EN EFECTIVO</strong> al piloto cuando le entregue el paquete"</div>
+</div>
+`},
+
+// ===== SLIDE 2: ENVIOS - TEMPLATE =====
+{html:`
+<div class="section-icon">📋</div>
+<div class="section-title">Mensaje Obligatorio</div>
+<div class="section-subtitle">Copie y personalice CADA VEZ que confirme un pago</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Despues de que el cliente paga, <strong>SIEMPRE</strong> envie este mensaje con todos los datos completos. No vale solo decir "su guia esta en preparacion".</div>
+</div>
+<div class="template-msg">
+  Confirmamos su pago. Su pedido se programa para entrega a transporte el <span class="fill">[DIA]</span>.<br><br>
+  • Transporte: <span class="fill">[Guatex / Cargo Expreso / JR]</span><br>
+  • Direccion: <span class="fill">[DIRECCION COMPLETA]</span><br>
+  • Tiempo estimado: <span class="fill">[X]</span> dias habiles<br>
+  • Costo de envio: Aprox. Q<span class="fill">[RANGO]</span>, se paga EN EFECTIVO al piloto<br><br>
+  <strong>IMPORTANTE:</strong> Una vez entregado al transporte, la responsabilidad del paquete es del transportista.<br><br>
+  Le enviaremos su numero de guia cuando este disponible.<br>
+  Alguna duda sobre el envio?
+</div>
+<div class="policy-box">
+  <strong>POLITICA:</strong> NO hacemos reembolsos. Una vez entregado al transporte, la responsabilidad es del transportista. Pero <strong>SI ayudamos</strong> al cliente a presentar reclamos.
+</div>
+`},
+
+// ===== SLIDE 3: QUIZ ENVIOS =====
+{html:`
+<div class="section-icon">🤔</div>
+<div class="section-title">Pregunta Rapida</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">A ver si quedo claro! Responde esta pregunta:</div>
+</div>
+<div class="quiz-section">
+  <div class="quiz-q">Un cliente paga su pedido. Que le dice despues?</div>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q1')">"Tu guia de envio esta en preparacion y la recibiras muy pronto"</button>
+  <button class="quiz-option" onclick="checkQuiz(this,true,'q1')">"Confirmamos su pago. Su pedido sale manana por Guatex a [direccion]. El flete es aprox Q45, se paga en efectivo al piloto."</button>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q1')">"Ya se proceso su pago, le avisamos cuando salga"</button>
+  <div class="quiz-feedback good" id="q1-good">Excelente! Siempre de TODOS los datos: transporte, direccion, tiempo, costo y metodo de pago.</div>
+  <div class="quiz-feedback bad" id="q1-bad">No! Eso es muy vago. El cliente necesita saber: que empresa lo lleva, cuando llega, cuanto cuesta el flete y que se paga en efectivo.</div>
+</div>
+`},
+
+// ===== SLIDE 4: QUEJAS - 5 PASOS =====
+{html:`
+<div class="section-icon">😤</div>
+<div class="section-title">Regla 2: Quejas</div>
+<div class="section-subtitle">Cuando el cliente esta enojado</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Cuando un cliente esta molesto, NUNCA diga "pasare la informacion". Siga estos <strong>5 pasos obligatorios</strong>:</div>
+</div>
+<div class="step-flow">
+  <div class="step-item"><div class="step-num">1</div><div class="step-text"><strong>ESCUCHAR</strong> — Deje que hable. No interrumpa ni se justifique.</div></div>
+  <div class="step-item"><div class="step-num">2</div><div class="step-text"><strong>DISCULPARSE</strong> — "Lamento mucho lo que esta pasando." (No es aceptar culpa, es mostrar que nos importa.)</div></div>
+  <div class="step-item"><div class="step-num">3</div><div class="step-text"><strong>SOLUCIONAR</strong> — De una accion CONCRETA con TIEMPO: "Voy a llamar a Guatex ahora. En 30 minutos le confirmo."</div></div>
+  <div class="step-item"><div class="step-num">4</div><div class="step-text"><strong>SEGUIMIENTO</strong> — Si prometio 30 minutos, responda en 30 minutos. Si no tiene respuesta, avise que sigue en proceso.</div></div>
+  <div class="step-item"><div class="step-num">5</div><div class="step-text"><strong>ESCALAR</strong> — Si el cliente amenaza con abogado o redes sociales, llame a su supervisor INMEDIATAMENTE.</div></div>
+</div>
+`},
+
+// ===== SLIDE 5: FRASES PROHIBIDAS =====
+{html:`
+<div class="section-icon">🚫</div>
+<div class="section-title">Frases Prohibidas</div>
+<div class="section-subtitle">Lo que NUNCA debe decir vs. lo que SI debe decir</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Estas frases estan <strong>PROHIBIDAS</strong>. Aprenda las alternativas correctas:</div>
+</div>
+<div class="do-dont">
+  <div class="dont-box">"Pasare la informacion al area correspondiente"</div>
+  <div class="do-box">"Voy a resolver esto personalmente. En 30 minutos le confirmo."</div>
+</div>
+<div class="do-dont">
+  <div class="dont-box">"No es culpa nuestra, es del transporte"</div>
+  <div class="do-box">"Lamento la situacion. Voy a ayudarle a contactar al transportista."</div>
+</div>
+<div class="do-dont">
+  <div class="dont-box">"Presentele el reclamo al transportista"</div>
+  <div class="do-box">"Le ayudo a presentar el reclamo. Le explico como hacerlo."</div>
+</div>
+<div class="do-dont">
+  <div class="dont-box">"No podemos hacer nada"</div>
+  <div class="do-box">"Dejeme ver que opciones tenemos para ayudarle."</div>
+</div>
+`},
+
+// ===== SLIDE 6: QUIZ QUEJAS =====
+{html:`
+<div class="section-icon">🤔</div>
+<div class="section-title">Pregunta Rapida</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Un cliente esta furioso porque su paquete no llego. Que hace PRIMERO?</div>
+</div>
+<div class="quiz-section">
+  <div class="quiz-q">El cliente dice: "Estoy harto! Voy a publicar en redes!" Que hace?</div>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q2')">"Muy bien, pasare esta informacion al area correspondiente"</button>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q2')">"No es culpa nuestra, es del transporte"</button>
+  <button class="quiz-option" onclick="checkQuiz(this,true,'q2')">"Lamento mucho la situacion. Voy a llamar al transportista ahora mismo. En 30 minutos le confirmo." + Escalar a supervisor.</button>
+  <div class="quiz-feedback good" id="q2-good">Perfecto! Disculparse + accion concreta + escalar porque menciono redes sociales. Asi se hace!</div>
+  <div class="quiz-feedback bad" id="q2-bad">No! Eso es exactamente lo que NO debemos hacer. Recuerde los 5 pasos: Escuchar, Disculparse, Solucionar, Seguimiento, Escalar.</div>
+</div>
+`},
+
+// ===== SLIDE 7: PROBLEMAS ENVIO =====
+{html:`
+<div class="section-icon">📦💥</div>
+<div class="section-title">Regla 3: Problemas de Envio</div>
+<div class="section-subtitle">Paquetes rebotados, danados o perdidos</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Recuerde: <strong>NO hacemos reembolsos</strong> ni somos responsables de danos en transito. Pero <strong>SI debemos AYUDAR</strong> al cliente a reclamar al transportista.</div>
+</div>
+<div class="policy-box">
+  <strong>POLITICA:</strong> Una vez entregado al transporte, la responsabilidad es del transportista. NO hacemos reembolsos ni reenvios. Pero SI AYUDAMOS al cliente a presentar su reclamo.
+</div>
+<div class="card">
+  <div class="card-title">📦 Paquete rebotado</div>
+  <div class="card-body">1. Disculparse<br>2. Rastrear la guia<br>3. Informar que paso<br>4. Coordinar nuevo intento<br>5. Confirmar entrega</div>
+</div>
+<div class="card orange">
+  <div class="card-title">💥 Producto danado</div>
+  <div class="card-body">1. Pedir fotos del dano<br>2. Disculparse<br>3. AYUDAR a presentar reclamo al transportista<br>4. Dar datos de contacto del transporte<br>5. Seguimiento del reclamo</div>
+</div>
+<div class="card coral">
+  <div class="card-title">❓ Paquete perdido</div>
+  <div class="card-body">1. Verificar guia con transportista<br>2. Informar al cliente<br>3. Ayudar a hacer reclamo formal<br>4. Escalar a supervisor si es necesario</div>
+</div>
+`},
+
+// ===== SLIDE 8: TRASPASOS =====
+{html:`
+<div class="section-icon">🔄</div>
+<div class="section-title">Regla 4: Traspasos</div>
+<div class="section-subtitle">Cuando tomas la conversacion de otra companera</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Si le asignan una conversacion que empezo otra companera, <strong>NUNCA</strong> le pregunte al cliente cosas que ya dijo. Siga estos 3 pasos:</div>
+</div>
+<div class="step-flow">
+  <div class="step-item" style="background:var(--green-bg)"><div class="step-num" style="background:var(--blue)">1</div><div class="step-text"><strong>LEA TODO</strong> — Lea la conversacion COMPLETA desde el inicio. No pregunte al cliente lo que ya dijo.</div></div>
+  <div class="step-item" style="background:var(--green-bg)"><div class="step-num" style="background:var(--green)">2</div><div class="step-text"><strong>IDENTIFIQUE</strong> — Que se prometio? Que esta pendiente? Hay algun problema activo?</div></div>
+  <div class="step-item" style="background:var(--green-bg)"><div class="step-num" style="background:var(--orange)">3</div><div class="step-text"><strong>PRESENTESE</strong> — "Le saluda [SU NOMBRE]. Estoy tomando su caso. Ya revise su historial y estoy al tanto de [resumen]."</div></div>
+</div>
+<div class="dont-box" style="margin-top:14px">Contradecir lo que la companera anterior prometio al cliente.</div>
+`},
+
+// ===== SLIDE 9: NOMBRES =====
+{html:`
+<div class="section-icon">🏷️</div>
+<div class="section-title">Regla 5: Tu Nombre Real</div>
+<div class="section-subtitle">Siempre use su nombre real, nada de alias</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">A partir de hoy, <strong>TODAS</strong> usan su nombre real. Si el cliente no sabe quien lo atendio, no puede recomendar ni reclamar.</div>
+</div>
+<div class="name-row"><div class="name-before">Alexa = "Dina"</div><div class="name-after">ALEXA</div></div>
+<div class="name-row"><div class="name-before">Erika = "Mishel"</div><div class="name-after">ERIKA</div></div>
+<div class="name-row"><div class="name-before">Veraly = "Fatima"</div><div class="name-after">VERALY</div></div>
+<div class="name-row"><div class="name-before">Kasandra (sin cambio)</div><div class="name-after">KASANDRA</div></div>
+<div class="card green" style="margin-top:16px">
+  <div class="card-title">Saludo estandar:</div>
+  <div class="card-body">"Buen dia, le saluda <strong>[SU NOMBRE]</strong> del equipo de ventas de AgroChina. En que puedo ayudarle?"</div>
+</div>
+`},
+
+// ===== SLIDE 10: ESCRITURA =====
+{html:`
+<div class="section-icon">✍️</div>
+<div class="section-title">Regla 6: Escritura Profesional</div>
+<div class="section-subtitle">Como escribir para verse profesional</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">La forma en que escribimos dice mucho de nosotros. Siga estas <strong>5 reglas simples</strong>:</div>
+</div>
+<div class="step-flow">
+  <div class="step-item"><div class="step-num" style="background:var(--teal)">A</div><div class="step-text">Primera letra en <strong>MAYUSCULA</strong> en cada mensaje</div></div>
+  <div class="step-item"><div class="step-num" style="background:var(--teal)">B</div><div class="step-text">Use <strong>puntos y comas</strong> donde corresponda</div></div>
+  <div class="step-item"><div class="step-num" style="background:var(--teal)">C</div><div class="step-text">Use <strong>acentos</strong>: envio, informacion, atencion</div></div>
+  <div class="step-item"><div class="step-num" style="background:var(--teal)">D</div><div class="step-text"><strong>NO escriba TODO</strong> en MAYUSCULAS (se lee como grito)</div></div>
+  <div class="step-item"><div class="step-num" style="background:var(--teal)">E</div><div class="step-text">Lea su mensaje <strong>UNA VEZ</strong> antes de enviar</div></div>
+</div>
+<div class="do-dont">
+  <div class="dont-box">"MI NOMBRE ES KASANDRA con todo gusto en un momento le envio la orden"</div>
+  <div class="do-box">"Buen dia, le saluda Kasandra. Con todo gusto, en un momento le envio la orden."</div>
+</div>
+<div class="card teal" style="margin-top:8px">
+  <div class="card-title">Templates:</div>
+  <div class="card-body">Maximo 5 lineas | Maximo 2-3 emojis | Siempre personalice con el nombre del cliente</div>
+</div>
+`},
+
+// ===== SLIDE 11: MISMO CANAL =====
+{html:`
+<div class="section-icon">📱</div>
+<div class="section-title">Regla 7: Mismo Canal</div>
+<div class="section-subtitle">NUNCA mande al cliente al correo</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Si el cliente escribio por <strong>WhatsApp</strong>, atiendalo por WhatsApp. Si escribio por <strong>Instagram</strong>, atiendalo por Instagram. NUNCA diga "escriba al correo".</div>
+</div>
+<div class="dont-box">"Favor de escribir en el correo que dice la misma publicacion"</div>
+<div class="do-box" style="margin-top:8px">"Dejeme verificar esa informacion y le respondo aqui mismo."</div>
+<div style="margin-top:16px">
+  <div class="card pink">
+    <div class="card-title">Si no tiene la informacion:</div>
+    <div class="card-body">
+      1. Diga: "Dejeme verificar"<br>
+      2. Consulte internamente (bodega, inventario, supervisor)<br>
+      3. Responda EN EL MISMO CHAT<br>
+      4. Si tarda mas de 15 min, avise que sigue verificando
+    </div>
+  </div>
+</div>
+`},
+
+// ===== SLIDE 12: PRODUCTOS =====
+{html:`
+<div class="section-icon">🍜</div>
+<div class="section-title">Regla 8: Productos</div>
+<div class="section-subtitle">Si no sabe, NO invente. Pregunte.</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Es <strong>MUCHO</strong> mejor decir "dejeme consultar" que dar informacion <strong>incorrecta</strong>. Un error de producto dana nuestra credibilidad.</div>
+</div>
+<div class="card green">
+  <div class="card-title">Lo que DEBE decir:</div>
+  <div class="card-body">"[Nombre], no estoy familiarizada con ese producto. Dejeme consultar con nuestro equipo para darle informacion precisa. Le respondo en [tiempo]."</div>
+</div>
+<div class="dont-box">Sugerir un producto como sustituto si no esta segura</div>
+<div class="dont-box" style="margin-top:6px">Decir "es parecido" o "es basicamente lo mismo"</div>
+<div class="dont-box" style="margin-top:6px">Inventar caracteristicas de un producto</div>
+<div class="policy-box" style="margin-top:14px">
+  <strong>CASO REAL:</strong> Un chef profesional pregunto por Arroz Koji. Se le sugirio MSG (Glutamato) como sustituto. Son productos COMPLETAMENTE diferentes. El chef tuvo que corregir a la vendedora.<br><br>
+  <strong>Lo correcto:</strong> "Chef, no estoy familiarizada con el Arroz Koji. Dejeme consultar si lo manejamos."
+</div>
+`},
+
+// ===== SLIDE 13: QUIZ FINAL =====
+{html:`
+<div class="section-icon">📝</div>
+<div class="section-title">Quiz Final</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Ultima pregunta para ver si aprendio todo!</div>
+</div>
+<div class="quiz-section">
+  <div class="quiz-q">Un cliente por Instagram pregunta si tienen un producto que usted no conoce. Que hace?</div>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q3')">"Favor de escribir al correo para mas informacion"</button>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q3')">"Si, es parecido a [otro producto]. Se lo puedo ofrecer."</button>
+  <button class="quiz-option" onclick="checkQuiz(this,true,'q3')">"No estoy familiarizada con ese producto. Dejeme consultar con el equipo y le respondo aqui mismo en unos minutos."</button>
+  <div class="quiz-feedback good" id="q3-good">PERFECTO! No invento, no redireccion a correo, y respondio en el mismo canal. Aplico las reglas 7 y 8 juntas!</div>
+  <div class="quiz-feedback bad" id="q3-bad">Incorrecto! Recuerde: NO redireccione al correo (Regla 7) y NO invente informacion de productos (Regla 8).</div>
+</div>
+`},
+
+// ===== SLIDE 14: RESUMEN =====
+{html:`
+<div class="section-icon">⭐</div>
+<div class="section-title">8 Reglas de Oro</div>
+<div class="neko-section">
+  <div class="neko-avatar">🐱</div>
+  <div class="neko-bubble">Excelente! Ya terminamos. Aqui el resumen de todo lo que aprendimos hoy:</div>
+</div>
+<div class="card"><div class="card-title"><span class="badge red">1</span> ENVIOS</div><div class="card-body">Siempre de TODOS los datos de envio</div></div>
+<div class="card coral"><div class="card-title"><span class="badge coral">2</span> QUEJAS</div><div class="card-body">5 pasos: Escuchar, Disculparse, Solucionar, Seguimiento, Escalar</div></div>
+<div class="card orange"><div class="card-title"><span class="badge orange">3</span> PROBLEMAS</div><div class="card-body">Ayude al cliente a reclamar al transportista</div></div>
+<div class="card blue"><div class="card-title"><span class="badge blue">4</span> TRASPASOS</div><div class="card-body">Lea TODO el historial antes de responder</div></div>
+<div class="card purple"><div class="card-title"><span class="badge purple">5</span> NOMBRE</div><div class="card-body">Use SIEMPRE su nombre real</div></div>
+<div class="card teal"><div class="card-title"><span class="badge teal">6</span> ESCRITURA</div><div class="card-body">Mayusculas, puntuacion, acentos, templates cortos</div></div>
+<div class="card pink"><div class="card-title"><span class="badge pink">7</span> MISMO CANAL</div><div class="card-body">NUNCA mande al correo</div></div>
+<div class="card green"><div class="card-title"><span class="badge green">8</span> PRODUCTOS</div><div class="card-body">Si no sabe, NO invente. Pregunte.</div></div>
+`},
+
+// ===== SLIDE 15: COMPLETION =====
+{html:`
+<div class="completion">
+  <div style="font-size:80px;margin-bottom:10px">🐱🎉</div>
+  <div class="completion-text" style="font-size:24px;font-weight:800;color:var(--dark)">Capacitacion Completada!</div>
+  <div class="completion-score" id="scoreDisplay">0/3</div>
+  <div class="completion-text">respuestas correctas en los quizzes</div>
+  <div style="margin:20px auto;max-width:360px">
+    <div class="card green">
+      <div class="card-body" style="text-align:center;font-size:15px">
+        <strong>Aplique todo desde HOY.</strong><br>Cualquier duda, consulte con su supervisor.
+      </div>
+    </div>
+    <div style="margin-top:16px;text-align:center;color:var(--gray);font-size:12px">
+      AgroChina Express | Asia al Instante<br>Marzo 2026
+    </div>
+  </div>
+  <button onclick="location.reload()" style="margin-top:16px;padding:12px 30px;background:var(--red);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer">Repetir Capacitacion</button>
+</div>
+`}
+];
+
+let currentSlide = 0;
+let score = 0;
+let totalQuiz = 3;
+let answered = {};
+
+function renderSlide(index) {
+  const container = document.getElementById('content');
+  container.innerHTML = '<div class="slide active">' + SLIDES[index].html + '</div>';
+  container.scrollTop = 0;
+
+  // Update progress
+  const pct = Math.round((index / (SLIDES.length - 1)) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = pct + '%';
+
+  // Update buttons
+  document.getElementById('btnPrev').disabled = index === 0;
+  const btnNext = document.getElementById('btnNext');
+  if (index === 0) {
+    btnNext.textContent = 'Empezar';
+  } else if (index === SLIDES.length - 1) {
+    btnNext.textContent = 'Fin';
+    btnNext.disabled = true;
+  } else {
+    btnNext.textContent = 'Siguiente';
+    btnNext.disabled = false;
+  }
+
+  // Show score on completion slide
+  if (index === SLIDES.length - 1) {
+    document.getElementById('scoreDisplay').textContent = score + '/' + totalQuiz;
+  }
+}
+
+function nextSlide() {
+  if (currentSlide < SLIDES.length - 1) {
+    currentSlide++;
+    renderSlide(currentSlide);
+  }
+}
+
+function prevSlide() {
+  if (currentSlide > 0) {
+    currentSlide--;
+    renderSlide(currentSlide);
+  }
+}
+
+function checkQuiz(btn, correct, qid) {
+  if (answered[qid]) return;
+  answered[qid] = true;
+
+  const options = btn.parentElement.querySelectorAll('.quiz-option');
+  options.forEach(o => {
+    o.disabled = true;
+    o.style.pointerEvents = 'none';
+  });
+
+  if (correct) {
+    btn.classList.add('correct');
+    score++;
+    document.getElementById(qid + '-good').classList.add('show');
+  } else {
+    btn.classList.add('wrong');
+    // Find correct one
+    options.forEach(o => {
+      if (o.onclick && o.onclick.toString().includes('true')) {
+        o.classList.add('correct');
+      }
+    });
+    document.getElementById(qid + '-bad').classList.add('show');
+  }
+}
+
+// Touch swipe support
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 60) {
+    if (diff > 0) nextSlide();
+    else prevSlide();
+  }
+});
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+  if (e.key === 'ArrowLeft') prevSlide();
+});
+
+// Init
+renderSlide(0);
+</script>
+</body>
+</html>
