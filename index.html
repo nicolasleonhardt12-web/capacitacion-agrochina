@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Capacitacion AgroChina Express</title>
+<title>Capacitación AgroChina Express</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--red:#FF2631;--dark:#1E293B;--white:#FFFFFF;--off-white:#FBF9F7;--gray:#6B6B6B;--light-gray:#F5F3F0;--green:#2E7D32;--green-bg:#E8F5E9;--red-bg:#FFEBEE;--yellow-bg:#FFFDE7;--blue:#1565C0;--orange:#F57C00;--purple:#7B1FA2;--teal:#00838F;--pink:#C2185B;--coral:#E8453C}
@@ -136,7 +136,7 @@ body{font-family:'Segoe UI',Calibri,Arial,sans-serif;background:var(--dark);colo
 <div id="app">
   <div class="header">
     <span style="font-size:24px">🐱</span>
-    <span class="header-text">CAPACITACION AGROCHINA</span>
+    <span class="header-text">CAPACITACIÓN AGROCHINA</span>
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
     <span class="progress-label" id="progressLabel">0%</span>
   </div>
@@ -146,7 +146,7 @@ body{font-family:'Segoe UI',Calibri,Arial,sans-serif;background:var(--dark);colo
   </div>
 
   <div class="footer-nav">
-    <button class="btn btn-prev" id="btnPrev" onclick="prevSlide()" disabled>Atras</button>
+    <button class="btn btn-prev" id="btnPrev" onclick="prevSlide()" disabled>Atrás</button>
     <button class="btn btn-next" id="btnNext" onclick="nextSlide()">Empezar</button>
   </div>
 </div>
@@ -159,15 +159,15 @@ const SLIDES = [
 <div class="welcome-hero">
   <div class="welcome-neko">🐱</div>
   <div class="welcome-title">Bienvenida al Equipo</div>
-  <div class="welcome-sub">Soy el Maneki Neko de AgroChina y hoy te voy a ensenar las 8 reglas para atender mejor a nuestros clientes.</div>
+  <div class="welcome-sub">Soy el Maneki Neko de AgroChina y hoy te voy a enseñar las 8 reglas para atender mejor a nuestros clientes.</div>
   <div style="background:var(--red);color:white;display:inline-block;padding:8px 20px;border-radius:20px;font-weight:700;font-size:14px;margin-bottom:20px">Marzo 2026 - Lectura Obligatoria</div>
   <div class="protocol-list">
-    <div class="protocol-item"><span class="badge red">1</span> Como informar los envios</div>
-    <div class="protocol-item"><span class="badge coral">2</span> Cuando el cliente esta enojado</div>
-    <div class="protocol-item"><span class="badge orange">3</span> Problemas de envio</div>
-    <div class="protocol-item"><span class="badge blue">4</span> Cuando tomas otra conversacion</div>
+    <div class="protocol-item"><span class="badge red">1</span> Cómo informar los envíos</div>
+    <div class="protocol-item"><span class="badge coral">2</span> Cuando el cliente está enojado</div>
+    <div class="protocol-item"><span class="badge orange">3</span> Problemas de envío</div>
+    <div class="protocol-item"><span class="badge blue">4</span> Cuando tomas otra conversación</div>
     <div class="protocol-item"><span class="badge purple">5</span> Siempre usa tu nombre real</div>
-    <div class="protocol-item"><span class="badge teal">6</span> Como escribir profesional</div>
+    <div class="protocol-item"><span class="badge teal">6</span> Cómo escribir profesional</div>
     <div class="protocol-item"><span class="badge pink">7</span> Nunca mandes al correo</div>
     <div class="protocol-item"><span class="badge green">8</span> Si no sabes, pregunta</div>
   </div>
@@ -177,27 +177,27 @@ const SLIDES = [
 // ===== SLIDE 1: ENVIOS INTRO =====
 {html:`
 <div class="section-icon">📦</div>
-<div class="section-title">Regla 1: Envios</div>
-<div class="section-subtitle">Como informar los envios correctamente</div>
+<div class="section-title">Regla 1: Envíos</div>
+<div class="section-subtitle">Cómo informar los envíos correctamente</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Hola! Empecemos con lo mas importante: <strong>los envios</strong>. Este es el area donde MAS estamos fallando. El cliente SIEMPRE debe saber 4 cosas antes de comprar.</div>
+  <div class="neko-bubble">¡Hola! Empecemos con lo más importante: <strong>los envíos</strong>. Este es el área donde MÁS estamos fallando. El cliente SIEMPRE debe saber 4 cosas antes de comprar.</div>
 </div>
 <div class="card">
   <div class="card-title"><span class="badge red">1</span> TRANSPORTE</div>
-  <div class="card-body">Diga QUE empresa llevara el paquete: Guatex, Cargo Expreso o JR.</div>
+  <div class="card-body">Diga QUÉ empresa llevará el paquete: Guatex, Cargo Expreso o JR.</div>
 </div>
 <div class="card orange">
   <div class="card-title"><span class="badge orange">2</span> COSTO</div>
-  <div class="card-body">De un precio estimado: "El envio a su zona cuesta entre Q35 y Q50"</div>
+  <div class="card-body">Dé un precio estimado: "El envío a su zona cuesta entre Q35 y Q50"</div>
 </div>
 <div class="card blue">
   <div class="card-title"><span class="badge blue">3</span> TIEMPO</div>
-  <div class="card-body">Diga CUANDO llega: "Pedidos antes de 2PM salen al dia siguiente"</div>
+  <div class="card-body">Diga CUÁNDO llega: "Pedidos antes de 2PM salen al día siguiente"</div>
 </div>
 <div class="card purple">
   <div class="card-title"><span class="badge purple">4</span> PAGO DEL FLETE</div>
-  <div class="card-body">Explique: "El envio se paga <strong>EN EFECTIVO</strong> al piloto cuando le entregue el paquete"</div>
+  <div class="card-body">Explique: "El envío se paga <strong>EN EFECTIVO</strong> al piloto cuando le entregue el paquete"</div>
 </div>
 `},
 
@@ -208,38 +208,38 @@ const SLIDES = [
 <div class="section-subtitle">Copie y personalice CADA VEZ que confirme un pago</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Despues de que el cliente paga, <strong>SIEMPRE</strong> envie este mensaje con todos los datos completos. No vale solo decir "su guia esta en preparacion".</div>
+  <div class="neko-bubble">Después de que el cliente paga, <strong>SIEMPRE</strong> envíe este mensaje con todos los datos completos. No vale solo decir "su guía está en preparación".</div>
 </div>
 <div class="template-msg">
-  Confirmamos su pago. Su pedido se programa para entrega a transporte el <span class="fill">[DIA]</span>.<br><br>
+  Confirmamos su pago. Su pedido se programa para entrega a transporte el <span class="fill">[DÍA]</span>.<br><br>
   • Transporte: <span class="fill">[Guatex / Cargo Expreso / JR]</span><br>
-  • Direccion: <span class="fill">[DIRECCION COMPLETA]</span><br>
-  • Tiempo estimado: <span class="fill">[X]</span> dias habiles<br>
-  • Costo de envio: Aprox. Q<span class="fill">[RANGO]</span>, se paga EN EFECTIVO al piloto<br><br>
+  • Dirección: <span class="fill">[DIRECCIÓN COMPLETA]</span><br>
+  • Tiempo estimado: <span class="fill">[X]</span> días hábiles<br>
+  • Costo de envío: Aprox. Q<span class="fill">[RANGO]</span>, se paga EN EFECTIVO al piloto<br><br>
   <strong>IMPORTANTE:</strong> Una vez entregado al transporte, la responsabilidad del paquete es del transportista.<br><br>
-  Le enviaremos su numero de guia cuando este disponible.<br>
-  Alguna duda sobre el envio?
+  Le enviaremos su número de guía cuando esté disponible.<br>
+  ¿Alguna duda sobre el envío?
 </div>
 <div class="policy-box">
-  <strong>POLITICA:</strong> NO hacemos reembolsos. Una vez entregado al transporte, la responsabilidad es del transportista. Pero <strong>SI ayudamos</strong> al cliente a presentar reclamos.
+  <strong>POLÍTICA:</strong> NO hacemos reembolsos. Una vez entregado al transporte, la responsabilidad es del transportista. Pero <strong>SÍ ayudamos</strong> al cliente a presentar reclamos.
 </div>
 `},
 
 // ===== SLIDE 3: QUIZ ENVIOS =====
 {html:`
 <div class="section-icon">🤔</div>
-<div class="section-title">Pregunta Rapida</div>
+<div class="section-title">Pregunta Rápida</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">A ver si quedo claro! Responde esta pregunta:</div>
+  <div class="neko-bubble">¡A ver si quedó claro! Responde esta pregunta:</div>
 </div>
 <div class="quiz-section">
-  <div class="quiz-q">Un cliente paga su pedido. Que le dice despues?</div>
-  <button class="quiz-option" onclick="checkQuiz(this,false,'q1')">"Tu guia de envio esta en preparacion y la recibiras muy pronto"</button>
-  <button class="quiz-option" onclick="checkQuiz(this,true,'q1')">"Confirmamos su pago. Su pedido sale manana por Guatex a [direccion]. El flete es aprox Q45, se paga en efectivo al piloto."</button>
-  <button class="quiz-option" onclick="checkQuiz(this,false,'q1')">"Ya se proceso su pago, le avisamos cuando salga"</button>
-  <div class="quiz-feedback good" id="q1-good">Excelente! Siempre de TODOS los datos: transporte, direccion, tiempo, costo y metodo de pago.</div>
-  <div class="quiz-feedback bad" id="q1-bad">No! Eso es muy vago. El cliente necesita saber: que empresa lo lleva, cuando llega, cuanto cuesta el flete y que se paga en efectivo.</div>
+  <div class="quiz-q">Un cliente paga su pedido. ¿Qué le dice después?</div>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q1')">"Tu guía de envío está en preparación y la recibirás muy pronto"</button>
+  <button class="quiz-option" onclick="checkQuiz(this,true,'q1')">"Confirmamos su pago. Su pedido sale mañana por Guatex a [dirección]. El flete es aprox Q45, se paga en efectivo al piloto."</button>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q1')">"Ya se procesó su pago, le avisamos cuando salga"</button>
+  <div class="quiz-feedback good" id="q1-good">¡Excelente! Siempre dé TODOS los datos: transporte, dirección, tiempo, costo y método de pago.</div>
+  <div class="quiz-feedback bad" id="q1-bad">¡No! Eso es muy vago. El cliente necesita saber: qué empresa lo lleva, cuándo llega, cuánto cuesta el flete y que se paga en efectivo.</div>
 </div>
 `},
 
@@ -247,16 +247,16 @@ const SLIDES = [
 {html:`
 <div class="section-icon">😤</div>
 <div class="section-title">Regla 2: Quejas</div>
-<div class="section-subtitle">Cuando el cliente esta enojado</div>
+<div class="section-subtitle">Cuando el cliente está enojado</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Cuando un cliente esta molesto, NUNCA diga "pasare la informacion". Siga estos <strong>5 pasos obligatorios</strong>:</div>
+  <div class="neko-bubble">Cuando un cliente está molesto, NUNCA diga "pasaré la información". Siga estos <strong>5 pasos obligatorios</strong>:</div>
 </div>
 <div class="step-flow">
   <div class="step-item"><div class="step-num">1</div><div class="step-text"><strong>ESCUCHAR</strong> — Deje que hable. No interrumpa ni se justifique.</div></div>
-  <div class="step-item"><div class="step-num">2</div><div class="step-text"><strong>DISCULPARSE</strong> — "Lamento mucho lo que esta pasando." (No es aceptar culpa, es mostrar que nos importa.)</div></div>
-  <div class="step-item"><div class="step-num">3</div><div class="step-text"><strong>SOLUCIONAR</strong> — De una accion CONCRETA con TIEMPO: "Voy a llamar a Guatex ahora. En 30 minutos le confirmo."</div></div>
-  <div class="step-item"><div class="step-num">4</div><div class="step-text"><strong>SEGUIMIENTO</strong> — Si prometio 30 minutos, responda en 30 minutos. Si no tiene respuesta, avise que sigue en proceso.</div></div>
+  <div class="step-item"><div class="step-num">2</div><div class="step-text"><strong>DISCULPARSE</strong> — "Lamento mucho lo que está pasando." (No es aceptar culpa, es mostrar que nos importa.)</div></div>
+  <div class="step-item"><div class="step-num">3</div><div class="step-text"><strong>SOLUCIONAR</strong> — Dé una acción CONCRETA con TIEMPO: "Voy a llamar a Guatex ahora. En 30 minutos le confirmo."</div></div>
+  <div class="step-item"><div class="step-num">4</div><div class="step-text"><strong>SEGUIMIENTO</strong> — Si prometió 30 minutos, responda en 30 minutos. Si no tiene respuesta, avise que sigue en proceso.</div></div>
   <div class="step-item"><div class="step-num">5</div><div class="step-text"><strong>ESCALAR</strong> — Si el cliente amenaza con abogado o redes sociales, llame a su supervisor INMEDIATAMENTE.</div></div>
 </div>
 `},
@@ -265,70 +265,70 @@ const SLIDES = [
 {html:`
 <div class="section-icon">🚫</div>
 <div class="section-title">Frases Prohibidas</div>
-<div class="section-subtitle">Lo que NUNCA debe decir vs. lo que SI debe decir</div>
+<div class="section-subtitle">Lo que NUNCA debe decir vs. lo que SÍ debe decir</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Estas frases estan <strong>PROHIBIDAS</strong>. Aprenda las alternativas correctas:</div>
+  <div class="neko-bubble">Estas frases están <strong>PROHIBIDAS</strong>. Aprenda las alternativas correctas:</div>
 </div>
 <div class="do-dont">
-  <div class="dont-box">"Pasare la informacion al area correspondiente"</div>
+  <div class="dont-box">"Pasaré la información al área correspondiente"</div>
   <div class="do-box">"Voy a resolver esto personalmente. En 30 minutos le confirmo."</div>
 </div>
 <div class="do-dont">
   <div class="dont-box">"No es culpa nuestra, es del transporte"</div>
-  <div class="do-box">"Lamento la situacion. Voy a ayudarle a contactar al transportista."</div>
+  <div class="do-box">"Lamento la situación. Voy a ayudarle a contactar al transportista."</div>
 </div>
 <div class="do-dont">
-  <div class="dont-box">"Presentele el reclamo al transportista"</div>
-  <div class="do-box">"Le ayudo a presentar el reclamo. Le explico como hacerlo."</div>
+  <div class="dont-box">"Preséntele el reclamo al transportista"</div>
+  <div class="do-box">"Le ayudo a presentar el reclamo. Le explico cómo hacerlo."</div>
 </div>
 <div class="do-dont">
   <div class="dont-box">"No podemos hacer nada"</div>
-  <div class="do-box">"Dejeme ver que opciones tenemos para ayudarle."</div>
+  <div class="do-box">"Déjeme ver qué opciones tenemos para ayudarle."</div>
 </div>
 `},
 
 // ===== SLIDE 6: QUIZ QUEJAS =====
 {html:`
 <div class="section-icon">🤔</div>
-<div class="section-title">Pregunta Rapida</div>
+<div class="section-title">Pregunta Rápida</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Un cliente esta furioso porque su paquete no llego. Que hace PRIMERO?</div>
+  <div class="neko-bubble">Un cliente está furioso porque su paquete no llegó. ¿Qué hace PRIMERO?</div>
 </div>
 <div class="quiz-section">
-  <div class="quiz-q">El cliente dice: "Estoy harto! Voy a publicar en redes!" Que hace?</div>
-  <button class="quiz-option" onclick="checkQuiz(this,false,'q2')">"Muy bien, pasare esta informacion al area correspondiente"</button>
+  <div class="quiz-q">El cliente dice: "¡Estoy harto! ¡Voy a publicar en redes!" ¿Qué hace?</div>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q2')">"Muy bien, pasaré esta información al área correspondiente"</button>
   <button class="quiz-option" onclick="checkQuiz(this,false,'q2')">"No es culpa nuestra, es del transporte"</button>
-  <button class="quiz-option" onclick="checkQuiz(this,true,'q2')">"Lamento mucho la situacion. Voy a llamar al transportista ahora mismo. En 30 minutos le confirmo." + Escalar a supervisor.</button>
-  <div class="quiz-feedback good" id="q2-good">Perfecto! Disculparse + accion concreta + escalar porque menciono redes sociales. Asi se hace!</div>
-  <div class="quiz-feedback bad" id="q2-bad">No! Eso es exactamente lo que NO debemos hacer. Recuerde los 5 pasos: Escuchar, Disculparse, Solucionar, Seguimiento, Escalar.</div>
+  <button class="quiz-option" onclick="checkQuiz(this,true,'q2')">"Lamento mucho la situación. Voy a llamar al transportista ahora mismo. En 30 minutos le confirmo." + Escalar a supervisor.</button>
+  <div class="quiz-feedback good" id="q2-good">¡Perfecto! Disculparse + acción concreta + escalar porque mencionó redes sociales. ¡Así se hace!</div>
+  <div class="quiz-feedback bad" id="q2-bad">¡No! Eso es exactamente lo que NO debemos hacer. Recuerde los 5 pasos: Escuchar, Disculparse, Solucionar, Seguimiento, Escalar.</div>
 </div>
 `},
 
 // ===== SLIDE 7: PROBLEMAS ENVIO =====
 {html:`
 <div class="section-icon">📦💥</div>
-<div class="section-title">Regla 3: Problemas de Envio</div>
-<div class="section-subtitle">Paquetes rebotados, danados o perdidos</div>
+<div class="section-title">Regla 3: Problemas de Envío</div>
+<div class="section-subtitle">Paquetes rebotados, dañados o perdidos</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Recuerde: <strong>NO hacemos reembolsos</strong> ni somos responsables de danos en transito. Pero <strong>SI debemos AYUDAR</strong> al cliente a reclamar al transportista.</div>
+  <div class="neko-bubble">Recuerde: <strong>NO hacemos reembolsos</strong> ni somos responsables de daños en tránsito. Pero <strong>SÍ debemos AYUDAR</strong> al cliente a reclamar al transportista.</div>
 </div>
 <div class="policy-box">
-  <strong>POLITICA:</strong> Una vez entregado al transporte, la responsabilidad es del transportista. NO hacemos reembolsos ni reenvios. Pero SI AYUDAMOS al cliente a presentar su reclamo.
+  <strong>POLÍTICA:</strong> Una vez entregado al transporte, la responsabilidad es del transportista. NO hacemos reembolsos ni reenvíos. Pero SÍ AYUDAMOS al cliente a presentar su reclamo.
 </div>
 <div class="card">
   <div class="card-title">📦 Paquete rebotado</div>
-  <div class="card-body">1. Disculparse<br>2. Rastrear la guia<br>3. Informar que paso<br>4. Coordinar nuevo intento<br>5. Confirmar entrega</div>
+  <div class="card-body">1. Disculparse<br>2. Rastrear la guía<br>3. Informar qué pasó<br>4. Coordinar nuevo intento<br>5. Confirmar entrega</div>
 </div>
 <div class="card orange">
-  <div class="card-title">💥 Producto danado</div>
-  <div class="card-body">1. Pedir fotos del dano<br>2. Disculparse<br>3. AYUDAR a presentar reclamo al transportista<br>4. Dar datos de contacto del transporte<br>5. Seguimiento del reclamo</div>
+  <div class="card-title">💥 Producto dañado</div>
+  <div class="card-body">1. Pedir fotos del daño<br>2. Disculparse<br>3. AYUDAR a presentar reclamo al transportista<br>4. Dar datos de contacto del transporte<br>5. Seguimiento del reclamo</div>
 </div>
 <div class="card coral">
   <div class="card-title">❓ Paquete perdido</div>
-  <div class="card-body">1. Verificar guia con transportista<br>2. Informar al cliente<br>3. Ayudar a hacer reclamo formal<br>4. Escalar a supervisor si es necesario</div>
+  <div class="card-body">1. Verificar guía con transportista<br>2. Informar al cliente<br>3. Ayudar a hacer reclamo formal<br>4. Escalar a supervisor si es necesario</div>
 </div>
 `},
 
@@ -336,17 +336,17 @@ const SLIDES = [
 {html:`
 <div class="section-icon">🔄</div>
 <div class="section-title">Regla 4: Traspasos</div>
-<div class="section-subtitle">Cuando tomas la conversacion de otra companera</div>
+<div class="section-subtitle">Cuando tomas la conversación de otra compañera</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Si le asignan una conversacion que empezo otra companera, <strong>NUNCA</strong> le pregunte al cliente cosas que ya dijo. Siga estos 3 pasos:</div>
+  <div class="neko-bubble">Si le asignan una conversación que empezó otra compañera, <strong>NUNCA</strong> le pregunte al cliente cosas que ya dijo. Siga estos 3 pasos:</div>
 </div>
 <div class="step-flow">
-  <div class="step-item" style="background:var(--green-bg)"><div class="step-num" style="background:var(--blue)">1</div><div class="step-text"><strong>LEA TODO</strong> — Lea la conversacion COMPLETA desde el inicio. No pregunte al cliente lo que ya dijo.</div></div>
-  <div class="step-item" style="background:var(--green-bg)"><div class="step-num" style="background:var(--green)">2</div><div class="step-text"><strong>IDENTIFIQUE</strong> — Que se prometio? Que esta pendiente? Hay algun problema activo?</div></div>
-  <div class="step-item" style="background:var(--green-bg)"><div class="step-num" style="background:var(--orange)">3</div><div class="step-text"><strong>PRESENTESE</strong> — "Le saluda [SU NOMBRE]. Estoy tomando su caso. Ya revise su historial y estoy al tanto de [resumen]."</div></div>
+  <div class="step-item" style="background:var(--green-bg)"><div class="step-num" style="background:var(--blue)">1</div><div class="step-text"><strong>LEA TODO</strong> — Lea la conversación COMPLETA desde el inicio. No pregunte al cliente lo que ya dijo.</div></div>
+  <div class="step-item" style="background:var(--green-bg)"><div class="step-num" style="background:var(--green)">2</div><div class="step-text"><strong>IDENTIFIQUE</strong> — ¿Qué se prometió? ¿Qué está pendiente? ¿Hay algún problema activo?</div></div>
+  <div class="step-item" style="background:var(--green-bg)"><div class="step-num" style="background:var(--orange)">3</div><div class="step-text"><strong>PRESÉNTESE</strong> — "Le saluda [SU NOMBRE]. Estoy tomando su caso. Ya revisé su historial y estoy al tanto de [resumen]."</div></div>
 </div>
-<div class="dont-box" style="margin-top:14px">Contradecir lo que la companera anterior prometio al cliente.</div>
+<div class="dont-box" style="margin-top:14px">Contradecir lo que la compañera anterior prometió al cliente.</div>
 `},
 
 // ===== SLIDE 9: NOMBRES =====
@@ -356,15 +356,15 @@ const SLIDES = [
 <div class="section-subtitle">Siempre use su nombre real, nada de alias</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">A partir de hoy, <strong>TODAS</strong> usan su nombre real. Si el cliente no sabe quien lo atendio, no puede recomendar ni reclamar.</div>
+  <div class="neko-bubble">A partir de hoy, <strong>TODAS</strong> usan su nombre real. Si el cliente no sabe quién lo atendió, no puede recomendar ni reclamar.</div>
 </div>
 <div class="name-row"><div class="name-before">Alexa = "Dina"</div><div class="name-after">ALEXA</div></div>
 <div class="name-row"><div class="name-before">Erika = "Mishel"</div><div class="name-after">ERIKA</div></div>
-<div class="name-row"><div class="name-before">Veraly = "Fatima"</div><div class="name-after">VERALY</div></div>
+<div class="name-row"><div class="name-before">Veraly = "Fátima"</div><div class="name-after">VERALY</div></div>
 <div class="name-row"><div class="name-before">Kasandra (sin cambio)</div><div class="name-after">KASANDRA</div></div>
 <div class="card green" style="margin-top:16px">
-  <div class="card-title">Saludo estandar:</div>
-  <div class="card-body">"Buen dia, le saluda <strong>[SU NOMBRE]</strong> del equipo de ventas de AgroChina. En que puedo ayudarle?"</div>
+  <div class="card-title">Saludo estándar:</div>
+  <div class="card-body">"Buen día, le saluda <strong>[SU NOMBRE]</strong> del equipo de ventas de AgroChina. ¿En qué puedo ayudarle?"</div>
 </div>
 `},
 
@@ -372,25 +372,25 @@ const SLIDES = [
 {html:`
 <div class="section-icon">✍️</div>
 <div class="section-title">Regla 6: Escritura Profesional</div>
-<div class="section-subtitle">Como escribir para verse profesional</div>
+<div class="section-subtitle">Cómo escribir para verse profesional</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
   <div class="neko-bubble">La forma en que escribimos dice mucho de nosotros. Siga estas <strong>5 reglas simples</strong>:</div>
 </div>
 <div class="step-flow">
-  <div class="step-item"><div class="step-num" style="background:var(--teal)">A</div><div class="step-text">Primera letra en <strong>MAYUSCULA</strong> en cada mensaje</div></div>
+  <div class="step-item"><div class="step-num" style="background:var(--teal)">A</div><div class="step-text">Primera letra en <strong>MAYÚSCULA</strong> en cada mensaje</div></div>
   <div class="step-item"><div class="step-num" style="background:var(--teal)">B</div><div class="step-text">Use <strong>puntos y comas</strong> donde corresponda</div></div>
-  <div class="step-item"><div class="step-num" style="background:var(--teal)">C</div><div class="step-text">Use <strong>acentos</strong>: envio, informacion, atencion</div></div>
-  <div class="step-item"><div class="step-num" style="background:var(--teal)">D</div><div class="step-text"><strong>NO escriba TODO</strong> en MAYUSCULAS (se lee como grito)</div></div>
+  <div class="step-item"><div class="step-num" style="background:var(--teal)">C</div><div class="step-text">Use <strong>acentos</strong>: envío, información, atención</div></div>
+  <div class="step-item"><div class="step-num" style="background:var(--teal)">D</div><div class="step-text"><strong>NO escriba TODO</strong> en MAYÚSCULAS (se lee como grito)</div></div>
   <div class="step-item"><div class="step-num" style="background:var(--teal)">E</div><div class="step-text">Lea su mensaje <strong>UNA VEZ</strong> antes de enviar</div></div>
 </div>
 <div class="do-dont">
-  <div class="dont-box">"MI NOMBRE ES KASANDRA con todo gusto en un momento le envio la orden"</div>
-  <div class="do-box">"Buen dia, le saluda Kasandra. Con todo gusto, en un momento le envio la orden."</div>
+  <div class="dont-box">"MI NOMBRE ES KASANDRA con todo gusto en un momento le envío la orden"</div>
+  <div class="do-box">"Buen día, le saluda Kasandra. Con todo gusto, en un momento le envío la orden."</div>
 </div>
 <div class="card teal" style="margin-top:8px">
   <div class="card-title">Templates:</div>
-  <div class="card-body">Maximo 5 lineas | Maximo 2-3 emojis | Siempre personalice con el nombre del cliente</div>
+  <div class="card-body">Máximo 5 líneas | Máximo 2-3 emojis | Siempre personalice con el nombre del cliente</div>
 </div>
 `},
 
@@ -401,18 +401,18 @@ const SLIDES = [
 <div class="section-subtitle">NUNCA mande al cliente al correo</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Si el cliente escribio por <strong>WhatsApp</strong>, atiendalo por WhatsApp. Si escribio por <strong>Instagram</strong>, atiendalo por Instagram. NUNCA diga "escriba al correo".</div>
+  <div class="neko-bubble">Si el cliente escribió por <strong>WhatsApp</strong>, atiéndalo por WhatsApp. Si escribió por <strong>Instagram</strong>, atiéndalo por Instagram. NUNCA diga "escriba al correo".</div>
 </div>
-<div class="dont-box">"Favor de escribir en el correo que dice la misma publicacion"</div>
-<div class="do-box" style="margin-top:8px">"Dejeme verificar esa informacion y le respondo aqui mismo."</div>
+<div class="dont-box">"Favor de escribir en el correo que dice la misma publicación"</div>
+<div class="do-box" style="margin-top:8px">"Déjeme verificar esa información y le respondo aquí mismo."</div>
 <div style="margin-top:16px">
   <div class="card pink">
-    <div class="card-title">Si no tiene la informacion:</div>
+    <div class="card-title">Si no tiene la información:</div>
     <div class="card-body">
-      1. Diga: "Dejeme verificar"<br>
+      1. Diga: "Déjeme verificar"<br>
       2. Consulte internamente (bodega, inventario, supervisor)<br>
       3. Responda EN EL MISMO CHAT<br>
-      4. Si tarda mas de 15 min, avise que sigue verificando
+      4. Si tarda más de 15 min, avise que sigue verificando
     </div>
   </div>
 </div>
@@ -425,18 +425,18 @@ const SLIDES = [
 <div class="section-subtitle">Si no sabe, NO invente. Pregunte.</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Es <strong>MUCHO</strong> mejor decir "dejeme consultar" que dar informacion <strong>incorrecta</strong>. Un error de producto dana nuestra credibilidad.</div>
+  <div class="neko-bubble">Es <strong>MUCHO</strong> mejor decir "déjeme consultar" que dar información <strong>incorrecta</strong>. Un error de producto daña nuestra credibilidad.</div>
 </div>
 <div class="card green">
   <div class="card-title">Lo que DEBE decir:</div>
-  <div class="card-body">"[Nombre], no estoy familiarizada con ese producto. Dejeme consultar con nuestro equipo para darle informacion precisa. Le respondo en [tiempo]."</div>
+  <div class="card-body">"[Nombre], no estoy familiarizada con ese producto. Déjeme consultar con nuestro equipo para darle información precisa. Le respondo en [tiempo]."</div>
 </div>
-<div class="dont-box">Sugerir un producto como sustituto si no esta segura</div>
-<div class="dont-box" style="margin-top:6px">Decir "es parecido" o "es basicamente lo mismo"</div>
-<div class="dont-box" style="margin-top:6px">Inventar caracteristicas de un producto</div>
+<div class="dont-box">Sugerir un producto como sustituto si no está segura</div>
+<div class="dont-box" style="margin-top:6px">Decir "es parecido" o "es básicamente lo mismo"</div>
+<div class="dont-box" style="margin-top:6px">Inventar características de un producto</div>
 <div class="policy-box" style="margin-top:14px">
-  <strong>CASO REAL:</strong> Un chef profesional pregunto por Arroz Koji. Se le sugirio MSG (Glutamato) como sustituto. Son productos COMPLETAMENTE diferentes. El chef tuvo que corregir a la vendedora.<br><br>
-  <strong>Lo correcto:</strong> "Chef, no estoy familiarizada con el Arroz Koji. Dejeme consultar si lo manejamos."
+  <strong>CASO REAL:</strong> Un chef profesional preguntó por Arroz Koji. Se le sugirió MSG (Glutamato) como sustituto. Son productos COMPLETAMENTE diferentes. El chef tuvo que corregir a la vendedora.<br><br>
+  <strong>Lo correcto:</strong> "Chef, no estoy familiarizada con el Arroz Koji. Déjeme consultar si lo manejamos."
 </div>
 `},
 
@@ -446,15 +446,15 @@ const SLIDES = [
 <div class="section-title">Quiz Final</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Ultima pregunta para ver si aprendio todo!</div>
+  <div class="neko-bubble">¡Última pregunta para ver si aprendió todo!</div>
 </div>
 <div class="quiz-section">
-  <div class="quiz-q">Un cliente por Instagram pregunta si tienen un producto que usted no conoce. Que hace?</div>
-  <button class="quiz-option" onclick="checkQuiz(this,false,'q3')">"Favor de escribir al correo para mas informacion"</button>
-  <button class="quiz-option" onclick="checkQuiz(this,false,'q3')">"Si, es parecido a [otro producto]. Se lo puedo ofrecer."</button>
-  <button class="quiz-option" onclick="checkQuiz(this,true,'q3')">"No estoy familiarizada con ese producto. Dejeme consultar con el equipo y le respondo aqui mismo en unos minutos."</button>
-  <div class="quiz-feedback good" id="q3-good">PERFECTO! No invento, no redireccion a correo, y respondio en el mismo canal. Aplico las reglas 7 y 8 juntas!</div>
-  <div class="quiz-feedback bad" id="q3-bad">Incorrecto! Recuerde: NO redireccione al correo (Regla 7) y NO invente informacion de productos (Regla 8).</div>
+  <div class="quiz-q">Un cliente por Instagram pregunta si tienen un producto que usted no conoce. ¿Qué hace?</div>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q3')">"Favor de escribir al correo para más información"</button>
+  <button class="quiz-option" onclick="checkQuiz(this,false,'q3')">"Sí, es parecido a [otro producto]. Se lo puedo ofrecer."</button>
+  <button class="quiz-option" onclick="checkQuiz(this,true,'q3')">"No estoy familiarizada con ese producto. Déjeme consultar con el equipo y le respondo aquí mismo en unos minutos."</button>
+  <div class="quiz-feedback good" id="q3-good">¡PERFECTO! No inventó, no redirigió a correo, y respondió en el mismo canal. ¡Aplicó las reglas 7 y 8 juntas!</div>
+  <div class="quiz-feedback bad" id="q3-bad">¡Incorrecto! Recuerde: NO redireccione al correo (Regla 7) y NO invente información de productos (Regla 8).</div>
 </div>
 `},
 
@@ -464,14 +464,14 @@ const SLIDES = [
 <div class="section-title">8 Reglas de Oro</div>
 <div class="neko-section">
   <div class="neko-avatar">🐱</div>
-  <div class="neko-bubble">Excelente! Ya terminamos. Aqui el resumen de todo lo que aprendimos hoy:</div>
+  <div class="neko-bubble">¡Excelente! Ya terminamos. Aquí el resumen de todo lo que aprendimos hoy:</div>
 </div>
-<div class="card"><div class="card-title"><span class="badge red">1</span> ENVIOS</div><div class="card-body">Siempre de TODOS los datos de envio</div></div>
+<div class="card"><div class="card-title"><span class="badge red">1</span> ENVÍOS</div><div class="card-body">Siempre dé TODOS los datos de envío</div></div>
 <div class="card coral"><div class="card-title"><span class="badge coral">2</span> QUEJAS</div><div class="card-body">5 pasos: Escuchar, Disculparse, Solucionar, Seguimiento, Escalar</div></div>
 <div class="card orange"><div class="card-title"><span class="badge orange">3</span> PROBLEMAS</div><div class="card-body">Ayude al cliente a reclamar al transportista</div></div>
 <div class="card blue"><div class="card-title"><span class="badge blue">4</span> TRASPASOS</div><div class="card-body">Lea TODO el historial antes de responder</div></div>
 <div class="card purple"><div class="card-title"><span class="badge purple">5</span> NOMBRE</div><div class="card-body">Use SIEMPRE su nombre real</div></div>
-<div class="card teal"><div class="card-title"><span class="badge teal">6</span> ESCRITURA</div><div class="card-body">Mayusculas, puntuacion, acentos, templates cortos</div></div>
+<div class="card teal"><div class="card-title"><span class="badge teal">6</span> ESCRITURA</div><div class="card-body">Mayúsculas, puntuación, acentos, templates cortos</div></div>
 <div class="card pink"><div class="card-title"><span class="badge pink">7</span> MISMO CANAL</div><div class="card-body">NUNCA mande al correo</div></div>
 <div class="card green"><div class="card-title"><span class="badge green">8</span> PRODUCTOS</div><div class="card-body">Si no sabe, NO invente. Pregunte.</div></div>
 `},
@@ -480,7 +480,7 @@ const SLIDES = [
 {html:`
 <div class="completion">
   <div style="font-size:80px;margin-bottom:10px">🐱🎉</div>
-  <div class="completion-text" style="font-size:24px;font-weight:800;color:var(--dark)">Capacitacion Completada!</div>
+  <div class="completion-text" style="font-size:24px;font-weight:800;color:var(--dark)">¡Capacitación Completada!</div>
   <div class="completion-score" id="scoreDisplay">0/3</div>
   <div class="completion-text">respuestas correctas en los quizzes</div>
   <div style="margin:20px auto;max-width:360px">
@@ -493,7 +493,7 @@ const SLIDES = [
       AgroChina Express | Asia al Instante<br>Marzo 2026
     </div>
   </div>
-  <button onclick="location.reload()" style="margin-top:16px;padding:12px 30px;background:var(--red);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer">Repetir Capacitacion</button>
+  <button onclick="location.reload()" style="margin-top:16px;padding:12px 30px;background:var(--red);color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer">Repetir Capacitación</button>
 </div>
 `}
 ];
